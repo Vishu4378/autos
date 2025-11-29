@@ -22,7 +22,13 @@ const glowClasses = {
   accent: "shadow-[0_0_30px_hsl(var(--accent)/0.3)]",
 };
 
-const WorkflowNode = ({ icon: Icon, label, color, delay = 0, className }: WorkflowNodeProps) => {
+const WorkflowNode = ({
+  icon: Icon,
+  label,
+  color,
+  delay = 0,
+  className,
+}: WorkflowNodeProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.5 }}

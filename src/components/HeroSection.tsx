@@ -1,14 +1,22 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play, Mail, Database, Send, Webhook, FileJson, Bot } from "lucide-react";
+import {
+  ArrowRight,
+  Play,
+  Mail,
+  Database,
+  Send,
+  Webhook,
+  FileJson,
+  Bot,
+} from "lucide-react";
 import WorkflowNode from "./WorkflowNode";
 
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen pt-32 pb-20 overflow-hidden">
-      {/* Background Effects */}
       <div className="absolute inset-0 bg-grid-pattern bg-grid opacity-30" />
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl " />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl" />
 
@@ -46,8 +54,9 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl"
           >
-            Connect your apps, automate workflows, and scale your business with the most powerful 
-            no-code automation platform. Start free, grow infinitely.
+            Connect your apps, automate workflows, and scale your business with
+            the most powerful no-code automation platform. Start free, grow
+            infinitely.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -84,7 +93,9 @@ const HeroSection = () => {
                 <div className="font-display text-3xl md:text-4xl font-bold text-foreground">
                   {stat.value}
                 </div>
-                <div className="text-sm text-muted-foreground mt-1">{stat.label}</div>
+                <div className="text-sm text-muted-foreground mt-1">
+                  {stat.label}
+                </div>
               </div>
             ))}
           </motion.div>
@@ -97,52 +108,82 @@ const HeroSection = () => {
             className="mt-20 relative"
           >
             <div className="flex items-center justify-center gap-4 md:gap-8 flex-wrap">
-              <WorkflowNode icon={Webhook} label="Trigger" color="primary" delay={0} />
-              
+              <WorkflowNode
+                icon={Webhook}
+                label="Trigger"
+                color="primary"
+                delay={0}
+              />
+
               <motion.div
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.5, delay: 0.8 }}
                 className="hidden md:block w-16 h-0.5 bg-gradient-to-r from-primary/50 to-secondary/50"
               />
-              
-              <WorkflowNode icon={Database} label="Database" color="secondary" delay={0.2} />
-              
+
+              <WorkflowNode
+                icon={Database}
+                label="Database"
+                color="secondary"
+                delay={0.2}
+              />
+
               <motion.div
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.5, delay: 1 }}
                 className="hidden md:block w-16 h-0.5 bg-gradient-to-r from-secondary/50 to-accent/50"
               />
-              
-              <WorkflowNode icon={Bot} label="AI Process" color="accent" delay={0.4} />
-              
+
+              <WorkflowNode
+                icon={Bot}
+                label="AI Process"
+                color="accent"
+                delay={0.4}
+              />
+
               <motion.div
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.5, delay: 1.2 }}
                 className="hidden md:block w-16 h-0.5 bg-gradient-to-r from-accent/50 to-primary/50"
               />
-              
-              <WorkflowNode icon={FileJson} label="Transform" color="primary" delay={0.6} />
-              
+
+              <WorkflowNode
+                icon={FileJson}
+                label="Transform"
+                color="primary"
+                delay={0.6}
+              />
+
               <motion.div
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.5, delay: 1.4 }}
                 className="hidden md:block w-16 h-0.5 bg-gradient-to-r from-primary/50 to-secondary/50"
               />
-              
-              <WorkflowNode icon={Mail} label="Email" color="secondary" delay={0.8} />
-              
+
+              <WorkflowNode
+                icon={Mail}
+                label="Email"
+                color="secondary"
+                delay={0.8}
+              />
+
               <motion.div
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.5, delay: 1.6 }}
                 className="hidden md:block w-16 h-0.5 bg-gradient-to-r from-secondary/50 to-primary/50"
               />
-              
-              <WorkflowNode icon={Send} label="Notify" color="primary" delay={1} />
+
+              <WorkflowNode
+                icon={Send}
+                label="Notify"
+                color="primary"
+                delay={1}
+              />
             </div>
           </motion.div>
         </div>
