@@ -1,8 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@theme {
+  --color-background: 222 47% 6%;
+  --color-foreground: 210 40% 98%;
+
+  --color-card: 222 47% 8%;
+  --color-card-foreground: 210 40% 98%;
+
+  --color-popover: 222 47% 8%;
+  --color-popover-foreground: 210 40% 98%;
+
+  --color-primary: 174 72% 56%;
+  --color-primary-foreground: 222 47% 6%;
+
+  --color-secondary: 15 85% 60%;
+  --color-secondary-foreground: 210 40% 98%;
+
+  --color-muted: 222 30% 14%;
+  --color-muted-foreground: 215 20% 55%;
+
+  --color-accent: 264 80% 65%;
+  --color-accent-foreground: 210 40% 98%;
+
+  --color-destructive: 0 84% 60%;
+  --color-destructive-foreground: 210 40% 98%;
+
+  --color-border: 222 30% 18%;
+  --color-input: 222 30% 18%;
+  --color-ring: 174 72% 56%;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 
 /* Automation SaaS Design System - Dark Theme */
 
@@ -65,16 +95,20 @@
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
-
   html {
     scroll-behavior: smooth;
   }
 
+  /* Use CSS variables directly to avoid unknown utility errors in @apply */
+  *, ::before, ::after {
+    border-color: hsl(var(--border));
+  }
+
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     font-family: 'Inter', sans-serif;
   }
 
@@ -85,7 +119,10 @@
 
 @layer components {
   .glass-card {
-    @apply bg-card/50 backdrop-blur-xl border border-border/50 rounded-2xl;
+    background-color: hsl(var(--card) / 0.5);
+    backdrop-filter: blur(24px);
+    border: 1px solid hsl(var(--border) / 0.5);
+    border-radius: 1rem;
     background: var(--gradient-glass);
   }
 
@@ -94,12 +131,14 @@
   }
 
   .gradient-text {
-    @apply bg-clip-text text-transparent;
+    background-clip: text;
+    color: transparent;
     background-image: var(--gradient-primary);
   }
 
   .gradient-text-secondary {
-    @apply bg-clip-text text-transparent;
+    background-clip: text;
+    color: transparent;
     background-image: var(--gradient-secondary);
   }
 
