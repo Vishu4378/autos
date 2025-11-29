@@ -2,7 +2,13 @@ import { Zap } from "lucide-react";
 
 const footerLinks = {
   Product: ["Features", "Integrations", "Pricing", "Changelog", "Roadmap"],
-  Resources: ["Documentation", "API Reference", "Community", "Templates", "Blog"],
+  Resources: [
+    "Documentation",
+    "API Reference",
+    "Community",
+    "Templates",
+    "Blog",
+  ],
   Company: ["About", "Careers", "Press", "Partners", "Contact"],
   Legal: ["Privacy", "Terms", "Security", "GDPR", "Cookies"],
 };
@@ -19,12 +25,12 @@ const Footer = () => {
                 <Zap className="w-5 h-5 text-primary" />
               </div>
               <span className="font-display font-bold text-xl">
-                Flow<span className="text-primary">Sync</span>
+                Auto<span className="text-primary">Sync</span>
               </span>
             </a>
             <p className="text-sm text-muted-foreground max-w-xs">
-              The most powerful automation platform for modern teams. 
-              Connect apps, automate workflows, scale infinitely.
+              The most powerful automation platform for modern teams. Connect
+              apps, automate workflows, scale infinitely.
             </p>
           </div>
 
@@ -50,19 +56,31 @@ const Footer = () => {
 
         <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2024 FlowSync. All rights reserved.
+            © 2024 Autos. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a
+              href="#"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
               Twitter
             </a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a
+              href="#"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
               LinkedIn
             </a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a
+              href="#"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
               GitHub
             </a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a
+              href="#"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
               Discord
             </a>
           </div>

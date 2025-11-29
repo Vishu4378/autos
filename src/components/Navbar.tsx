@@ -28,7 +28,7 @@ const Navbar = () => {
               <Zap className="w-5 h-5 text-primary" />
             </div>
             <span className="font-display font-bold text-xl text-foreground">
-              Flow<span className="text-primary">Sync</span>
+              Auto<span className="text-primary">Sync</span>
             </span>
           </a>
 
