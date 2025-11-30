@@ -1,6 +1,8 @@
 "use client";
 
 import WorkflowCanvas from "@/components/flow/WorkflowCanvas";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 // import Sidebar from "@/components/flow/Sidebar";
 
 export default function WorkflowBuilderPage() {
@@ -12,9 +14,12 @@ export default function WorkflowBuilderPage() {
       </div> */}
 
       {/* Workflow Canvas */}
-      <div className="flex-1">
+      {/* <div className="flex-1">
         <WorkflowCanvas />
-      </div>
+      </div> */}
+      <Link href="/workflow/_id">
+        <Button>+ Create a new flow</Button>
+      </Link>
     </div>
   );
 }
