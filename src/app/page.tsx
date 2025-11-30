@@ -1,12 +1,12 @@
 "use client";
-import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
-import TrustedBy from "@/components/TrustedBy";
-import FeaturesSection from "@/components/FeaturesSection";
-import HowItWorks from "@/components/HowItWorks";
-import IntegrationsSection from "@/components/IntegrationsSection";
-import CTASection from "@/components/CTASection";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/homepage/Navbar";
+import HeroSection from "@/components/homepage/HeroSection";
+import TrustedBy from "@/components/homepage/TrustedBy";
+import FeaturesSection from "@/components/homepage/FeaturesSection";
+import HowItWorks from "@/components/homepage/HowItWorks";
+import IntegrationsSection from "@/components/homepage/IntegrationsSection";
+import CTASection from "@/components/homepage/CTASection";
+import Footer from "@/components/homepage/Footer";
 
 const Index = () => {
   return (

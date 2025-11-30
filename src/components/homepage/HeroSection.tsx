@@ -11,6 +11,7 @@ import {
   Bot,
 } from "lucide-react";
 import WorkflowNode from "./WorkflowNode";
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
@@ -66,10 +67,13 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-col sm:flex-row gap-4 mt-10"
           >
-            <Button variant="hero" size="xl">
-              Start Building Free
-              <ArrowRight className="w-5 h-5" />
-            </Button>
+            <Link className="" href={"/workflow"}>
+              <Button variant="hero" size="xl">
+                Start Building Free
+                <ArrowRight className="w-5 h-5" />
+              </Button>
+            </Link>
+
             <Button variant="heroOutline" size="xl">
               <Play className="w-5 h-5" />
               Watch Demo

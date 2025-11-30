@@ -35,8 +35,8 @@ const CTASection = () => {
           </h2>
 
           <p className="text-muted-foreground max-w-xl mx-auto mb-8">
-            Join 10,000+ companies already saving hours every week. 
-            No credit card required. Set up in under 5 minutes.
+            Join 10,000+ companies already saving hours every week. No credit
+            card required. Set up in under 5 minutes.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

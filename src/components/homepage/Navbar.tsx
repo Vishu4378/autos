@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Zap } from "lucide-react";
+import Link from "next/link";
 
 const navLinks = [
   { name: "Features", href: "#features" },
@@ -50,9 +51,11 @@ const Navbar = () => {
             <Button variant="ghost" size="sm">
               Sign In
             </Button>
-            <Button variant="default" size="sm">
-              Get Started Free
-            </Button>
+            <Link className="" href={"/workflow"}>
+              <Button variant="default" size="sm">
+                Get Started Free
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -89,9 +92,11 @@ const Navbar = () => {
                   <Button variant="ghost" size="sm" className="w-full">
                     Sign In
                   </Button>
-                  <Button variant="default" size="sm" className="w-full">
-                    Get Started Free
-                  </Button>
+                  <Link className="" href={"/workflow"}>
+                    <Button variant="default" size="sm" className="w-full">
+                      Get Started Free
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </motion.div>
