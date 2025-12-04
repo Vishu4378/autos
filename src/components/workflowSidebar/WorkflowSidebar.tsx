@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-
+import { useTheme } from "next-themes";
 import {
   Sidebar,
   SidebarContent,
@@ -15,7 +15,21 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 
-import { LayoutDashboard, Workflow, Settings, User } from "lucide-react";
+import {
+  LayoutDashboard,
+  Workflow,
+  Settings,
+  User,
+  SunMoon,
+} from "lucide-react";
+import { Dropdown } from "react-day-picker";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "../ui/dropdown-menu";
+import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
+import { Button } from "../ui/button";
 
 const routes = [
   { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
@@ -26,13 +40,14 @@ const routes = [
 
 export function WorkflowSidebar() {
   const pathname = usePathname();
+  const { setTheme } = useTheme();
 
   return (
-    <Sidebar variant="inset" collapsible="offcanvas" className="shadow-sm">
+    <Sidebar className="shadow-sm">
       <SidebarHeader />
       <SidebarContent>
         <SidebarGroup>
-          {/* <SidebarMenu>
+          <SidebarMenu>
             {routes.map((item, i) => {
               const Icon = item.icon;
               const active = pathname.startsWith(item.href);
@@ -73,7 +88,21 @@ export function WorkflowSidebar() {
                 </motion.div>
               );
             })}
-          </SidebarMenu> */}
+          </SidebarMenu>
+        </SidebarGroup>
+        <SidebarGroup className="mt-auto">
+          <SidebarMenu>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="heroOutline">
+                  <SunMoon size={30} />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className={"text-xs px-2"} align="start">
+                will available in v2
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
 
