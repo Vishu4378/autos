@@ -47,21 +47,8 @@ const Settings = () => {
     });
   };
 
-  const uploadProfileImage = async (imagePath: string | null) => {
-    if (!imagePath) return;
-
-    const formData = new FormData();
-    formData.append("file", imagePath);
-    formData.append("bucketName", "profiles");
-
-    setUploadLoading(true);
-    await uploadApi.uploadImage(formData);
-    setUploadLoading(false);
-  };
-
   return (
     <>
-      {uplaodLoading && <Loader />}
       <div className="min-h-screen bg-background">
         <main className="container mx-auto px-4 py-12">
           <div className="max-w-xl mx-auto">
@@ -96,7 +83,6 @@ const Settings = () => {
                           image={field.value}
                           onImageChange={(str) => {
                             field.onChange(str);
-                            uploadProfileImage(str);
                           }}
                         />
                       </FormItem>
