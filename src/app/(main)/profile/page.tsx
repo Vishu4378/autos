@@ -14,7 +14,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import Link from "next/link";
 import { ProfilePictureEditor } from "@/components/profile/ProfilePicture";
 
 const formSchema = z.object({
@@ -74,7 +73,7 @@ const Settings = () => {
                   control={form.control}
                   name="profileImage"
                   render={({ field }) => (
-                    <FormItem className="">
+                    <FormItem className="w-fit">
                       <ProfilePictureEditor
                         name="User"
                         size="xl"

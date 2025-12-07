@@ -68,7 +68,7 @@ export function ProfilePictureEditor({
         )}
       >
         <AvatarImage src={image} alt={`${name}'s profile`} />
-        <AvatarFallback className="bg-gradient-to-br from-primary/80 to-secondary/80 text-primary-foreground font-bold">
+        <AvatarFallback className="bg-linear-to-br from-primary/80 to-secondary/80 text-primary-foreground font-bold">
           {initials}
         </AvatarFallback>
       </Avatar>
@@ -80,9 +80,8 @@ export function ProfilePictureEditor({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.8, y: -8 }}
           transition={{ duration: 0.15, ease: "easeOut" }}
-          className="absolute top-1 right-1 flex  p-0.5 bg-background/95 backdrop-blur-sm rounded-full border border-background/60 shadow-md"
+          className="absolute top-0 right-0 flex  p-0.5 bg-background/95 backdrop-blur-sm rounded-full border border-background/60 shadow-md"
         >
-          {/* Cross - Smaller & Subtle Red */}
           {hasImage ? (
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
@@ -113,12 +112,9 @@ export function ProfilePictureEditor({
               </Button>
             </motion.div>
           )}
-
-          {/* Upload - Smaller & Primary */}
         </motion.div>
       )}
 
-      {/* Hidden File Input */}
       <Input
         ref={fileInputRef}
         type="file"
