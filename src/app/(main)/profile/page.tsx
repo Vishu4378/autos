@@ -15,6 +15,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { ProfilePictureEditor } from "@/components/profile/ProfilePicture";
+import uploadApi from "@/api/upload.api";
+import { useState } from "react";
+import Loader from "@/components/ui/loader";
 
 const formSchema = z.object({
   username: z.string().min(2, "Username must be at least 2 characters"),
@@ -26,6 +29,7 @@ type FormValues = z.infer<typeof formSchema>;
 
 const Settings = () => {
   const { toast } = useToast();
+  const [uplaodLoading, setUploadLoading] = useState(false);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -43,99 +47,115 @@ const Settings = () => {
     });
   };
 
+  const uploadProfileImage = async (imagePath: string | null) => {
+    if (!imagePath) return;
+
+    const formData = new FormData();
+    formData.append("file", imagePath);
+    formData.append("bucketName", "profiles");
+
+    setUploadLoading(true);
+    await uploadApi.uploadImage(formData);
+    setUploadLoading(false);
+  };
+
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
+    <>
+      {uplaodLoading && <Loader />}
+      <div className="min-h-screen bg-background">
+        <main className="container mx-auto px-4 py-12">
+          <div className="max-w-xl mx-auto">
+            <div className="glass-card p-8 rounded-2xl border border-border/50">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+                  <User className="h-4 w-4 text-primary" />
+                </div>
+                <h2 className="text-2xl font-bold font-display">
+                  Profile Settings
+                </h2>
+                <div>
+                  <p className="text-muted-foreground">
+                    Manage your account details
+                  </p>
+                </div>
+              </div>
 
-      <main className="container mx-auto px-4 py-12">
-        <div className="max-w-xl mx-auto">
-          <div className="glass-card p-8 rounded-2xl border border-border/50">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
-                <User className="h-4 w-4 text-primary" />
-              </div>
-              <h2 className="text-2xl font-bold font-display">
-                Profile Settings
-              </h2>
-              <div>
-                <p className="text-muted-foreground">
-                  Manage your account details
-                </p>
-              </div>
+              <Form {...form}>
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="space-y-6"
+                >
+                  <FormField
+                    control={form.control}
+                    name="profileImage"
+                    render={({ field }) => (
+                      <FormItem className="w-fit">
+                        <ProfilePictureEditor
+                          name="User"
+                          size="xl"
+                          image={field.value}
+                          onImageChange={(str) => {
+                            field.onChange(str);
+                            uploadProfileImage(str);
+                          }}
+                        />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="username"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="flex items-center gap-2">
+                          <User className="h-4 w-4 text-muted-foreground" />
+                          Username
+                        </FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="Enter your username"
+                            className="bg-muted/50 border-border/50 focus:border-primary"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="flex items-center gap-2">
+                          <Mail className="h-4 w-4 text-muted-foreground" />
+                          Email Address
+                        </FormLabel>
+                        <FormControl>
+                          <Input
+                            type="email"
+                            placeholder="Enter your email"
+                            className="bg-muted/50 border-border/50 focus:border-primary"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <Button type="submit" className="w-full" size="lg">
+                    <Save className="h-4 w-4 mr-2" />
+                    Save Changes
+                  </Button>
+                </form>
+              </Form>
             </div>
-
-            <Form {...form}>
-              <form
-                onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-6"
-              >
-                <FormField
-                  control={form.control}
-                  name="profileImage"
-                  render={({ field }) => (
-                    <FormItem className="w-fit">
-                      <ProfilePictureEditor
-                        name="User"
-                        size="xl"
-                        image={field.value}
-                        onImageChange={(str) => field.onChange(str)}
-                      />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="username"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="flex items-center gap-2">
-                        <User className="h-4 w-4 text-muted-foreground" />
-                        Username
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="Enter your username"
-                          className="bg-muted/50 border-border/50 focus:border-primary"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="flex items-center gap-2">
-                        <Mail className="h-4 w-4 text-muted-foreground" />
-                        Email Address
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          type="email"
-                          placeholder="Enter your email"
-                          className="bg-muted/50 border-border/50 focus:border-primary"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <Button type="submit" className="w-full" size="lg">
-                  <Save className="h-4 w-4 mr-2" />
-                  Save Changes
-                </Button>
-              </form>
-            </Form>
           </div>
-        </div>
-      </main>
-    </div>
+        </main>
+      </div>
+    </>
   );
 };
 
