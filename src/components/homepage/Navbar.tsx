@@ -23,8 +23,7 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto">
         <div className="glass-card px-6 py-3 flex items-center justify-between">
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group">
+          <a href="/" className="flex items-center gap-2 group">
             <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
               <Zap className="w-5 h-5 text-primary" />
             </div>
@@ -46,11 +45,12 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <Button variant="ghost" size="sm">
-              Sign In
-            </Button>
+            <Link className="" href={"/login"}>
+              <Button variant="ghost" size="sm">
+                Sign In
+              </Button>
+            </Link>
             <Link className="" href={"/workflow"}>
               <Button variant="default" size="sm">
                 Get Started Free
@@ -67,7 +67,6 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Menu */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -89,9 +88,11 @@ const Navbar = () => {
                   </a>
                 ))}
                 <div className="flex flex-col gap-2 pt-4 border-t border-border">
-                  <Button variant="ghost" size="sm" className="w-full">
-                    Sign In
-                  </Button>
+                  <Link href={"/login"}>
+                    <Button variant="ghost" size="sm" className="w-full">
+                      Sign In
+                    </Button>
+                  </Link>
                   <Link className="" href={"/workflow"}>
                     <Button variant="default" size="sm" className="w-full">
                       Get Started Free
