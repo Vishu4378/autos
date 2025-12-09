@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import userApi from "@/api/user.api";
 
-const useUser = () =>
+const useUserInfo = () =>
   useQuery({
     queryKey: ["user"],
     queryFn: async () => {
@@ -9,4 +9,4 @@ const useUser = () =>
     },
   });
 
-export { useUser };
+export { useUserInfo };
